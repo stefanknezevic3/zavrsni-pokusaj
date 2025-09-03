@@ -541,7 +541,6 @@ const images = [
     }
 ];
 
-// Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = images;
 }
