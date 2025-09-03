@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Visual Stories</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+</head>
+<body>
+    
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    
+    
+    <div class="geometric-shapes">
+        <div class="shape shape-circle"></div>
+        <div class="shape shape-line-1"></div>
+        <div class="shape shape-line-2"></div>
+        <div class="shape shape-dot-1"></div>
+        <div class="shape shape-dot-2"></div>
+        <div class="shape shape-triangle"></div>
+    </div>
+    
+    
+    <div class="grid-bg"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__intro">
+                <span class="header__badge">Fotografski portfolio</span>
+                <h1 class="header__title">
+                    <span class="secret-word" data-word="1">Istraži</span> 
+                    <span class="text-gradient">vizualnu priču</span>
+                </h1>
+                <p class="header__subtitle">
+                    Otkrij i iskusi <span class="secret-word" data-word="2">trenutke</span>  slikane diljem svijeta. 
+                    Sve <span class="secret-word" data-word="3">fotografije</span> pričaju priču i kroje
+                    <span class="secret-word" data-word="4">uspomene</span> o ljepoti i kulturi koja nas okružuje.
+                </p>
+            </div>
+            
+            <div class="header__stats">
+                <div class="stat-card">
+                    <span class="stat-number">30</span>
+                    <span class="stat-label">Slika</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Lokacija</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Kategorije</span>
+                </div>
+                <div class="stat-card special-stat">
+                    <span class="stat-number">?</span>
+                    <span class="stat-label">Tajni</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            
+            <section class="filter-section">
+                <div class="filter-header">
+                    <h3>Filtriraj po kategoriji</h3>
+                    <p>Odaberi način prikazivanja</p>
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="sve">
+                        <span class="tab-icon">🌍</span>
+                        Sve
+                    </button>
+                    <button class="filter-tab" data-filter="priroda">
+                        <span class="tab-icon">🌿</span>
+                        Priroda
+                    </button>
+                    <button class="filter-tab" data-filter="ljudi">
+                        <span class="tab-icon">🗿</span>
+                        Ljudi
+                    </button>
+                    <button class="filter-tab" data-filter="grad">
+                        <span class="tab-icon">🏙️</span>
+                        Grad
+                    </button>
+                </div>
+            </section>
+
+            
+            <div class="view-section">
+                <div class="view-controls">
+                    <button class="view-toggle active" data-view="grid" title="Grid View">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>Mreža</span>
+                    </button>
+                    <button class="view-toggle" data-view="list" title="List View">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"/>
+                            <line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                        <span>Lista</span>
+                    </button>
+                    <button class="view-toggle" data-view="map" title="Map View">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="3 6 9 1 15 6 21 1 21 17 15 22 9 17 3 22"/>
+                            <line x1="9" y1="1" x2="9" y2="17"/>
+                            <line x1="15" y1="6" x2="15" y2="22"/>
+                        </svg>
+                        <span>Karta</span>
+                    </button>
+                </div>
+            </div>
+
+            
+            <section class="gallery-section">
+                <div class="gallery" id="gallery"></div>
+            </section>
+
+            
+            <section class="list-section hidden">
+                <div class="list-view" id="listView"></div>
+            </section>
+
+            
+            <section class="map-section hidden" id="mapContainer">
+                <div class="map-wrapper">
+                    <div id="map" class="map"></div>
+                    <div class="map-info">
+                        <div class="map-info-header">
+                            <h3>📍 Lokacija fotografije</h3>
+                            <p>Klikni marker kako bi vidio fotografiju</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modalClose">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            
+            <div class="modal__header">
+                <h2 class="modal__title" id="modalTitle"></h2>
+                <span class="modal__category" id="modalCategory"></span>
+            </div>
+            
+            <div class="modal__body">
+                <div class="modal__image-container">
+                    <div class="modal__image" id="modalImage"></div>
+                </div>
+                <div class="modal__info">
+                    <p class="modal__description" id="modalDescription"></p>
+                    <div class="modal__details" id="modalDetails"></div>
+                    <div class="modal__location" id="modalLocation"></div>
+                </div>
+            </div>
+            
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="prevPhoto">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                    Prethodna
+                </button>
+                <button class="btn btn--secondary" id="nextPhoto">
+                    Sljedeća
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="loading__content">
+            <div class="loading__spinner"></div>
+            <p>Slike se učitavaju...</p>
+        </div>
+    </div>
+
+<div class="prozor__slika-kontejner">
+    <div class="prozor__slika" id="modalImage"></div>
+
+    <button class="gumb-izvorna-slika" id="originalImageBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 3v18h18"/>
+            <path d="m19 9-5 5-4-4-3 3"/>
+        </svg>
+        Prikaži bez okvira
+    </button>
+</div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
