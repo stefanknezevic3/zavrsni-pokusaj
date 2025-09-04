@@ -272,7 +272,7 @@ const images = [
     {
         title: "Čamci",
         category: "priroda",
-        description: "Srce Zagreba, živahna tržnica puna lokalnth proizvoda, boja i mirisa.",
+        description: "Privezani uz obalu na predivnom i maglovitom jezeru Bled",
         location: "Bled, Slovenija",
         date: "2024-04-16",
         coordinates: { lat: 46.3683, lng: 16.6983 },
@@ -543,4 +543,5 @@ const images = [
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = images;
+
 }
